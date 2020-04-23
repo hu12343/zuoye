@@ -11,7 +11,6 @@
     <title>Title</title>
 </head>
 <body>
-<a href="customer.action">入口
-</a>
+<a href="customer.action">入口</a>
 </body>
 </html>
