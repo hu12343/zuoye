@@ -11,10 +11,7 @@
     <title>Title</title>
 </head>
 <body>
-<form action="customer.action" method="post">
-username: <input type="text" name="user.username"/></br>
-password: <input type="password" name="user.password"/><br>
-    <input type="submit" value="submit"/>
-</form>
+<a href="customer.action">入口
+</a>
 </body>
 </html>
