@@ -18,7 +18,7 @@ public class CustomerAction extends ActionSupport {
     }
 
     List<Customer> customers;
-    
+
     customerDAO customerDAO=new customerDAO();
     public String execute() throws Exception {
        this.customers=customerDAO.select();
