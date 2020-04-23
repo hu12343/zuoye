@@ -30,23 +30,27 @@
 			<div id="content">
 				<p id="whereami"></p>
 				<h1>Welcome!</h1>
-					<%
-						customerDAO customerDAO=new customerDAO();
-						List<Customer> list=customerDAO.select();
-							out.print("ID  ");
-							out.print("NAME ");
-							out.print("AGE ");
-							out.print("SEX ");
-							out.print("CITY  <br>");
-						for(Customer c : list)
-						{
-							out.print(c.getId()+"  ");
-							out.print(c.getName()+" ");
-							out.print(c.getAge()+" ");
-							out.print(c.getSex()+" ");
-							out.print(c.getCity()+"  <br>");
-						}
-					%>
+				<table class="table">
+					<tr class="table_header">
+						<td>ID</td>
+						<td>Name</td>
+						<td>Age</td>
+						<td>Sex</td>
+						<td>City</td>
+						<td>Operations</td>
+					</tr>
+					<s:iterator var="customer" value="customers" status="st">
+					<tr class="row1">
+						<td><s:property value="id"/></td>
+						<td><s:property value="name"/></td>
+						<td><s:property value="age"/></td>
+						<td><s:property value="sex"/></td>
+						<td><s:property value="city"/></td>
+						<td><a href="customerlist.html">delete customer</a>&nbsp;
+							<a href="updatecustomer.html">update customer</a></td>
+					</tr>
+					</s:iterator>
+				</table>
 				<p>
 					<input type="button" class="button" value="Add Employee"
 						onclick="location='toAdd.action'" />

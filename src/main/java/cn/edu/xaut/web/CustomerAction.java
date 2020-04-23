@@ -1,29 +1,28 @@
 package cn.edu.xaut.web;
 
+import cn.edu.xaut.DAO.customerDAO;
+import cn.edu.xaut.entity.Customer;
 import cn.edu.xaut.entity.User;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
+import java.util.List;
+
 public class CustomerAction extends ActionSupport {
-    public User getUser() {
-        return user;
+    public List<Customer> getCustomers() {
+        return customers;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setCustomers(List<Customer> customers) {
+        this.customers = customers;
     }
 
-    private User user;
+    List<Customer> customers;
+    customerDAO customerDAO=new customerDAO();
     public String execute() throws Exception {
-        ActionContext context=ActionContext.getContext();
-        System.out.println(this.user.getUsername());
-        System.out.println(this.user.getPassword());
-        if("hu".equals(this.user.getUsername())&&"123".equals(this.user.getPassword())) {
-            context.getSession().put("user",this.user);
+       this.customers=customerDAO.select();
             return SUCCESS;
-        }
-        else {
-            return INPUT;
-        }
+
+
     }
 }
