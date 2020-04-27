@@ -1,6 +1,7 @@
 package cn.edu.xaut.DAO;
 
 import cn.edu.xaut.entity.Customer;
+import cn.edu.xaut.utils.HibernateUtils;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -27,4 +28,28 @@ public class customerDAO {
         sessionFactory.close();
         return cs;
     }
+     public List<Customer> findCustomerByPage(int page,int pageSize){
+           Session session = HibernateUtils.getSession();
+           String hql = "from Customer";
+           Query query = session.createQuery(hql);
+          query.setFirstResult((page-1)*pageSize);
+           query.setMaxResults(pageSize);
+           List<Customer> customers = query.list();
+           session.close();
+           return customers;
+   }
+     public int findTotalPage(int pageSize) {
+           Session session = HibernateUtils.getSession();
+          String hql = "select count(*) from Customer";
+           Query query = session.createQuery(hql);
+           List list = query.list();
+          int row = Integer.valueOf(list.get(0).toString());
+
+           if(row%pageSize==0) {
+                return row/pageSize;
+           }
+           else {
+                return row/pageSize+1;
+                }
+           }
 }

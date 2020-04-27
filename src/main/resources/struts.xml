@@ -7,8 +7,9 @@
 <struts>
     <package name="customer"  extends="struts-default">
         <action name="customer" class="cn.edu.xaut.web.CustomerAction">
+            <param name="pageSize">2</param>
+             <param name="page">1</param>
         <result name="success">/WEB-INF/customerlist.jsp</result>
-            <result name="input">index.jsp</result>
         </action>
     </package>
 </struts>

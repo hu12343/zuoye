@@ -17,7 +17,7 @@
 			<div id="header">
 				<div id="rightheader">
 					<p>
-						2009/11/20 <br />
+						2009/11/20 <br/>
 					</p>
 				</div>
 				<div id="topheader">
@@ -55,6 +55,28 @@
 					<input type="button" class="button" value="Add Employee"
 						onclick="location='toAdd.action'" />
 				</p>
+			</div>
+			 <div align="right">
+			<s:if test="page==1">
+			<a href="customer.action">previous page</a>
+			 </s:if>
+			 <s:if test="page!=1">
+			 <a href="customer.action?page=${page-1}">previous page</a>
+			 </s:if>
+			<s:iterator var="i" begin="1" end="totalPage">
+			 <s:if test="page==#i">
+			 ${i}
+			 </s:if>
+			 <s:if test="page!=#i">
+			 <a href="customer.action?page=${i }">${i }</a>
+			</s:if>
+			</s:iterator>
+			 <s:if test="page==totalPage">
+				 <a href="customer.action">next page</a>
+			 </s:if>
+			<s:if test="page!=totalPage">
+			 <a href="customer.action?page=${page+1}">next page</a>
+			 </s:if>
 			</div>
 		</div>
 		<div id="footer">

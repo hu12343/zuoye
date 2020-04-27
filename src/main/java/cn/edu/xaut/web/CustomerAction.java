@@ -13,6 +13,45 @@ public class CustomerAction extends ActionSupport {
         return customers;
     }
 
+    public CustomerService getCuostmerService() {
+        return customerservice;
+    }
+
+    public void setCuostmerService(CustomerService cuostmerService) {
+        this.customerservice = cuostmerService;
+    }
+
+    CustomerService customerservice=new CustomerService();
+    int page;
+
+
+    int pageSize;
+
+    public int getPage() {
+        return page;
+    }
+
+    public void setPage(int page) {
+        this.page = page;
+    }
+
+    public int getPageSize() {
+        return pageSize;
+    }
+
+    public void setPageSize(int pageSize) {
+        this.pageSize = pageSize;
+    }
+
+    public int getTotalPage() {
+        return totalPage;
+    }
+
+    public void setTotalPage(int totalPage) {
+        this.totalPage = totalPage;
+    }
+
+    int totalPage;
     public void setCustomers(List<Customer> customers) {
         this.customers = customers;
     }
@@ -21,7 +60,8 @@ public class CustomerAction extends ActionSupport {
 
     customerDAO customerDAO=new customerDAO();
     public String execute() throws Exception {
-       this.customers=customerDAO.select();
+       this.customers= customerservice.findCustomerByPage(page,pageSize);
+       this.totalPage=customerservice.findTotalPage(pageSize);
             return SUCCESS;
 
 
