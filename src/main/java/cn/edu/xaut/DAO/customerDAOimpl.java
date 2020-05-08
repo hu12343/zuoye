@@ -9,7 +9,7 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import java.util.List;
 
-public class customerDAO {
+public class customerDAOimpl implements CustomerDAO{
 
    public  List<Customer> select() {
 

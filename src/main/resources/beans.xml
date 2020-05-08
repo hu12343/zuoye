@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+         http://www.springframework.org/schema/context/spring-context.xsd
+          ">
+    <context:annotation-config></context:annotation-config>
+ <context:component-scan base-package="cn.edu.xaut">
+ </context:component-scan>
+    <bean id="datasource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"></property>
+        <property name="username" value="root"></property>
+        <property name="password" value="root"></property>
+        <property name="url" value="jdbc:mysql://localhost:3306/hu?useUnicode=true&amp;characterEncoding=UTF-8&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC"/>
+    </bean>
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+    <property name="dataSource" ref="datasource"/>
+        <property name="hibernateProperties">
+                <props>
+                    <prop key="hibernate.show_sql">true</prop>
+                    <prop key="hibernate.format_sql">true</prop>
+                    <prop key="hibernate.dialect">
+                        org.hibernate.dialect.MySQL5Dialect
+                </prop>
+
+                </props>
+        </property>
+        <property name="mappingLocations">
+                <list>
+                    <value>
+                       Customer.hbm.xml
+                    </value>
+                </list>
+        </property>
+    </bean>
+    <bean id="customerService" class="cn.edu.xaut.web.CustomerServiceimpl">
+        <property name="customerDAO" ref="CustomerDAOSH"/>
+    </bean>
+</beans>

@@ -1,10 +1,10 @@
 package cn.edu.xaut.web;
 
-import cn.edu.xaut.DAO.customerDAO;
+import cn.edu.xaut.DAO.customerDAOimpl;
 import cn.edu.xaut.entity.Customer;
-import cn.edu.xaut.entity.User;
-import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.List;
 
@@ -13,15 +13,9 @@ public class CustomerAction extends ActionSupport {
         return customers;
     }
 
-    public CustomerService getCuostmerService() {
-        return customerservice;
-    }
+    ApplicationContext cs = new ClassPathXmlApplicationContext( "beans.xml");
+    CustomerService customerservice= cs.getBean ( "customerService",CustomerServiceimpl.class);
 
-    public void setCuostmerService(CustomerService cuostmerService) {
-        this.customerservice = cuostmerService;
-    }
-
-    CustomerService customerservice=new CustomerService();
     int page;
 
 
@@ -58,7 +52,7 @@ public class CustomerAction extends ActionSupport {
 
     List<Customer> customers;
 
-    customerDAO customerDAO=new customerDAO();
+    customerDAOimpl customerDAOimpl =new customerDAOimpl();
     public String execute() throws Exception {
        this.customers= customerservice.findCustomerByPage(page,pageSize);
        this.totalPage=customerservice.findTotalPage(pageSize);
