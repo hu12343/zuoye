@@ -1,6 +1,8 @@
 package cn.edu.xaut.web;
 
 import cn.edu.xaut.DAO.customerDAOimpl;
+import cn.edu.xaut.Service.CustomerService;
+import cn.edu.xaut.Service.CustomerServiceimpl;
 import cn.edu.xaut.entity.Customer;
 import com.opensymphony.xwork2.ActionSupport;
 import org.springframework.context.ApplicationContext;
@@ -14,7 +16,7 @@ public class CustomerAction extends ActionSupport {
     }
 
     ApplicationContext cs = new ClassPathXmlApplicationContext( "beans.xml");
-    CustomerService customerservice= cs.getBean ( "customerService",CustomerServiceimpl.class);
+    CustomerService customerservice= cs.getBean ( "customerService", CustomerServiceimpl.class);
 
     int page;
 

@@ -63,4 +63,9 @@ public class CustomerDAOSH implements CustomerDAO {
             return row/pageSize+1;
         }
     }
+    public void add(Customer customer)
+    {
+        Session session=sessionFactory.openSession();
+        session.save(customer);
+    }
 }

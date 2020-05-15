@@ -1,11 +1,15 @@
-package cn.edu.xaut.web;
+package cn.edu.xaut.Service;
 import cn.edu.xaut.DAO.CustomerDAO;
-import cn.edu.xaut.DAO.customerDAOimpl;
+import cn.edu.xaut.Service.CustomerService;
 import cn.edu.xaut.entity.Customer;
 import java.util.List;
 
 public class CustomerServiceimpl implements CustomerService {
 
+public void add(Customer customer)
+{
+    customerDAO.add(customer);
+}
     public CustomerDAO getCustomerDAO() {
         return customerDAO;
     }

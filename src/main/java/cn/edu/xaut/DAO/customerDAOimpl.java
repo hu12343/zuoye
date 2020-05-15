@@ -52,4 +52,9 @@ public class customerDAOimpl implements CustomerDAO{
                 return row/pageSize+1;
                 }
            }
+    public void add(Customer customer)
+    {
+       CustomerDAOSH customerDAOSH =new CustomerDAOSH();
+       customerDAOSH.add(customer);
+    }
 }

@@ -52,6 +52,7 @@
           <element id="library" level="project" name="Maven: org.springframework:spring-jdbc:4.2.6.RELEASE" />
           <element id="library" level="project" name="Maven: commons-dbcp:commons-dbcp:1.4" />
           <element id="library" level="project" name="Maven: commons-pool:commons-pool:1.5.4" />
+          <element id="library" level="project" name="Maven: org.aspectj:aspectjweaver:1.5.4" />
         </element>
       </element>
       <element id="directory" name="META-INF">

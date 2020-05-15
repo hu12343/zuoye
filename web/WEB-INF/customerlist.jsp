@@ -52,7 +52,7 @@
 					</s:iterator>
 				</table>
 				<p>
-					<input type="button" class="button" value="Add Employee"
+					<input type="button" class="button" value="Add customer"
 						onclick="location='toAdd.action'" />
 				</p>
 			</div>

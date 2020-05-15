@@ -11,5 +11,13 @@
              <param name="page">1</param>
         <result name="success">/WEB-INF/customerlist.jsp</result>
         </action>
+        <action name="toAdd">
+            <result name="success">/WEB-INF/addcustomer.jsp</result>
+        </action>
+        <action name="addCustomer" class="cn.edu.xaut.web.AddCustomerAction" method="addCustomer">
+            <result name="success" type="redirectAction">
+                <param name="actionName">customer</param>
+            </result>
+        </action>
     </package>
 </struts>
