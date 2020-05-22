@@ -4,10 +4,15 @@ import cn.edu.xaut.Service.CustomerService;
 import cn.edu.xaut.Service.CustomerServiceimpl;
 import cn.edu.xaut.entity.Customer;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Scope;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.stereotype.Controller;
+
+import javax.annotation.Resource;
 
 import static com.opensymphony.xwork2.Action.SUCCESS;
-
+@Controller
+@Scope("prototype")
 public class AddCustomerAction {
     Customer customer;
 
@@ -26,8 +31,9 @@ public class AddCustomerAction {
     public void setCustomerService(CustomerService customerService) {
         this.customerService = customerService;
     }
-    ApplicationContext cs = new ClassPathXmlApplicationContext( "beans.xml");
-    CustomerService customerService = cs.getBean ( "customerService", CustomerServiceimpl.class);
+
+  @Resource(name="customerService")
+    CustomerService customerService;
 
     public String addCustomer()
     {
